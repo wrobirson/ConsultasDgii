@@ -6,9 +6,15 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Product>ConsultasDgii</Product>
-    <Authors>Octetus.ConsultasDgii.Scraping</Authors>
-    <Company>Octetus.ConsultasDgii.Scraping</Company>
+    <Authors>wrobirson</Authors>
+    <Company>Octetus</Company>
     <PackageId>Octetus.ConsultasDgii.Scraping</PackageId>
+    <RepositoryUrl>https://github.com/wrobirson/ConsultasDgii</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/wrobirson/ConsultasDgii/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>© Octetus. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/wrobirson/ConsultasDgii</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>DGII</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
