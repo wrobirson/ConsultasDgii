@@ -38,5 +38,5 @@ if (response.IsOk)
 ```
 ## Licencia
 
-[MTI](https://github.com/wrobirson/ConsultasDgii/blob/master/LICENSE)
+[MIT](https://github.com/wrobirson/ConsultasDgii/blob/master/LICENSE)
 
