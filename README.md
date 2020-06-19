@@ -1,6 +1,6 @@
 # ConsultasDgii
 
-ConsultasDgii es una libraría que provee un API de .NET escrita en el lenguaje C# que permite realizar validaciones de RNC/Cédula en el sitio web de la Dirección General de Impuestos Internos (DGII) de la República Dominicana.
+ConsultasDgii es una librería que provee un API de .NET escrita en el lenguaje C# que permite realizar validaciones de RNC/Cédula en el sitio web de la Dirección General de Impuestos Internos (DGII) de la República Dominicana.
 
 
 
