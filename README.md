@@ -1,6 +1,6 @@
 # ConsultasDgii
 
-ConsultasDgii es una librería que provee un API de .NET escrita en el lenguaje C# que permite realizar validaciones de RNC/Cédula en el sitio web de la Dirección General de Impuestos Internos (DGII) de la República Dominicana.
+ConsultasDgii es una librería que provee un API de .NET escrita en el lenguaje C# que permite realizar consutas de RNC/Cédula y NCF en el sitio web de la Dirección General de Impuestos Internos (DGII) de la República Dominicana.
 
 ## Instalación
 
@@ -16,7 +16,7 @@ Utilizando dotnet CLI
 dotnet add package Octetus.ConsultasDgii --version 1.0.0
 ```
 
-## Ejemplo consultar contibuyente
+## Ejemplo consultar contribuyente
 
 ```c#
 string cedulaORnc = string.Empty;
@@ -31,8 +31,6 @@ if (response.Success)
 	nombreComercial = response.NombreComercial;
 }
 ```
-## Licencia
-
 
 ## Ejemplo consultar RNC registrados
 
@@ -49,9 +47,6 @@ if (response.Success)
 	nombre = response.Nombre;
 }
 ```
-## Licencia
-
-
 ## Ejemplo consultar NCF
 
 ```c#
