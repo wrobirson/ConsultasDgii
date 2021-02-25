@@ -2,38 +2,69 @@
 
 ConsultasDgii es una librería que provee un API de .NET escrita en el lenguaje C# que permite realizar validaciones de RNC/Cédula en el sitio web de la Dirección General de Impuestos Internos (DGII) de la República Dominicana.
 
-
-
 ## Instalación
 
 Utilizando NuGet
 
 ```
-Install-Package Octetus.ConsultasDgii.Scraping -Version 1.0.0
+Install-Package Octetus.ConsultasDgii -Version 1.0.0
 ```
 
 Utilizando dotnet CLI
 
 ```
-dotnet add package Octetus.ConsultasDgii.Scraping --version 1.0.0
+dotnet add package Octetus.ConsultasDgii --version 1.0.0
 ```
 
-## Ejemplo
+## Ejemplo consultar contibuyente
 
 ```c#
-string rnc = string.Empty;
+string cedulaORnc = string.Empty;
+string nombreComercial = string.Empty;
+
+var dgii = new ServicioConsultasWebDgii();
+var response = dgii.ConsultarRncContribuyentes("[SU RNC]");
+
+if (response.Success)
+{
+	cedulaORnc = response.CedulaORnc;
+	nombreComercial = response.NombreComercial;
+}
+```
+## Licencia
+
+
+## Ejemplo consultar RNC registrados
+
+```c#
+string rncCedula = string.Empty;
 string nombre = string.Empty;
 
-var dgii = new DgiiScraper();
-var response = dgii.Execute(new DgiiQueryRequest
-{
-	Rnc = "[SU RNC]"
-});
+var dgii = new ServicioConsultasWebDgii();
+var response = dgii.ConsultarRncRegistrados("[SU RNC]");
 
-if (response.IsOk)
+if (response.Success)
 {
-	rnc = response.Rnc;
-   	nombre = response.Nombre;
+	rncCedula = response.RncOCedula;
+	nombre = response.Nombre;
+}
+```
+## Licencia
+
+
+## Ejemplo consultar NCF
+
+```c#
+string tipo = string.Empty;
+string estado = string.Empty;
+
+var dgii = new ServicioConsultasWebDgii();
+var response = dgii.ConsultarNcf("[SU NCF]", "[SU RNC]");
+
+if (response.Success)
+{
+	tipo = response.TipoDeComprobante;
+	estado = response.Estado;
 }
 ```
 ## Licencia
