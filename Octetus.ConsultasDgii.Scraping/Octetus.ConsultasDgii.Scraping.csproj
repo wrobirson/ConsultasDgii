@@ -15,6 +15,7 @@
     <PackageProjectUrl>https://github.com/wrobirson/ConsultasDgii</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>DGII</PackageTags>
+    <Version>1.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Octetus.ConsultasDgii.Core\Octetus.ConsultasDgii.Core.csproj" />
+    <ProjectReference Include="..\Octetus.ConsultasDgii.Core\Octetus.ConsultasDgii.csproj" />
   </ItemGroup>
 
   <ItemGroup>

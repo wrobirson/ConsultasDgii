@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1145
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octetus.ConsultasDgii.Core", "Octetus.ConsultasDgii.Core\Octetus.ConsultasDgii.Core.csproj", "{3C605FB1-1E0C-4B82-9DBE-54B36BB05CA6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octetus.ConsultasDgii.Scraping", "Octetus.ConsultasDgii.Scraping\Octetus.ConsultasDgii.Scraping.csproj", "{45768284-1775-4EAE-81DE-D5C7B5AFD30B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octetus.ConsultasDgii.Tests", "Octetus.ConsultasDgii.Tests\Octetus.ConsultasDgii.Tests.csproj", "{2F0E75B6-C2C3-4206-8EB5-E219421A4A77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoNet4XWeb", "DemoNet4XWeb\DemoNet4XWeb.csproj", "{DD24DDE7-6835-4EAD-B21B-D5B4F29B0270}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octetus.ConsultasDgii.WebAPI", "Octetus.ConsultasDgii.WebAPI\Octetus.ConsultasDgii.WebAPI.csproj", "{E5410489-1AEE-4A7A-8D88-56110E348D3B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octetus.ConsultasDgii", "Octetus.ConsultasDgii\Octetus.ConsultasDgii.csproj", "{D297208D-06FB-4B7B-A02D-F425EA977FD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3C605FB1-1E0C-4B82-9DBE-54B36BB05CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3C605FB1-1E0C-4B82-9DBE-54B36BB05CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3C605FB1-1E0C-4B82-9DBE-54B36BB05CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3C605FB1-1E0C-4B82-9DBE-54B36BB05CA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45768284-1775-4EAE-81DE-D5C7B5AFD30B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45768284-1775-4EAE-81DE-D5C7B5AFD30B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45768284-1775-4EAE-81DE-D5C7B5AFD30B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45768284-1775-4EAE-81DE-D5C7B5AFD30B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2F0E75B6-C2C3-4206-8EB5-E219421A4A77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2F0E75B6-C2C3-4206-8EB5-E219421A4A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F0E75B6-C2C3-4206-8EB5-E219421A4A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F0E75B6-C2C3-4206-8EB5-E219421A4A77}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DD24DDE7-6835-4EAD-B21B-D5B4F29B0270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DD24DDE7-6835-4EAD-B21B-D5B4F29B0270}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DD24DDE7-6835-4EAD-B21B-D5B4F29B0270}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DD24DDE7-6835-4EAD-B21B-D5B4F29B0270}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5410489-1AEE-4A7A-8D88-56110E348D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5410489-1AEE-4A7A-8D88-56110E348D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5410489-1AEE-4A7A-8D88-56110E348D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5410489-1AEE-4A7A-8D88-56110E348D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D297208D-06FB-4B7B-A02D-F425EA977FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D297208D-06FB-4B7B-A02D-F425EA977FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D297208D-06FB-4B7B-A02D-F425EA977FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D297208D-06FB-4B7B-A02D-F425EA977FD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

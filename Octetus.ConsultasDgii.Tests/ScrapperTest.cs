@@ -1,54 +1,44 @@
-using Octetus.ConsultasDgii.ConsultasWeb;
-using Octetus.ConsultasDgii.Core.Messages;
+
+using Octetus.ConsultasDgii.Services;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Octetus.ConsultasDgii.Tests
 {
-    public class ScrapperTest
+
+    public class ConsultasWebDgiiTest
     {
-        DgiiScraper dgiiScraper = new DgiiScraper();
+
+        ServicioConsultasWebDgii consultasWebDgii = new ServicioConsultasWebDgii();
+
 
         [Fact]
-        public void TestCedulaValidaIsOk()
+        public void TestConsultarRncContribuyentes()
         {
+            var res = consultasWebDgii.ConsultarRncContribuyentes("132100123");
+            Assert.True(res.Success, "No éxito con un RNC valido ");
 
-            string[] cedulas = new[]
-            {
-                "00115620486",
-                "001-1562048-6",
-            };
-
-            foreach (var cedula in cedulas)
-            {
-                DgiiQueryRequest request = new DgiiQueryRequest();
-                request.Rnc = cedula;
-                DgiiQueryResponse response = dgiiScraper.Execute(request);
-                Assert.True(response.IsOk);
-                Assert.Equal("001-1562048-6", response.Rnc);
-                Assert.Equal("ESMELIN SANTIAGO MATIAS GARCIA", response.Nombre);
-            }
+            res = consultasWebDgii.ConsultarRncContribuyentes("40220227033");
+            Assert.True(res.Success == false && res.Message == "El RNC/Cédula consultado no se encuentra inscrito como Contribuyente.",
+                "RNC invalido no retorna mensaje de error");
         }
+
 
         [Fact]
-        public void TestRncValidoIsOk()
+        public void TestConsultarNcf()
         {
-            string[] rncs = new []
-            {
-                "130-17528-4",
-                "130175284",
-            };
+            // NCF Valido
+            var res = consultasWebDgii.ConsultarNcf("B0100000001", "132100123");
+            Assert.True(res.Success, "No éxito con un NCF valido ");
 
-            foreach (var rnc in rncs)
-            {
-                DgiiQueryRequest request = new DgiiQueryRequest();
-                request.Rnc = rnc;
-                DgiiQueryResponse response = dgiiScraper.Execute(request);
-                Assert.True(response.IsOk);
-                Assert.Equal("130-17528-4", response.Rnc);
-                Assert.Equal("ADAM AND EVE CLUB S A", response.Nombre);
-            }
+            // NCF invalido
+            res = consultasWebDgii.ConsultarNcf("B0100000021", "132100123");
+            Assert.True(res.Success == false && res.Message == "El Número de Comprobante Fiscal ingresado no es correcto o no corresponde a este RNC",
+                "NCF invalido no retorna mensaje de error");
         }
-       
+
     }
+
+
 }
