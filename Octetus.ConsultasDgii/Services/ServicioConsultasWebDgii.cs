@@ -43,8 +43,8 @@ namespace Octetus.ConsultasDgii.Services
             formData += "__EVENTARGUMENT=&";
             formData += "__VIEWSTATEGENERATOR=" + __VIEWSTATEGENERATOR + "&";
 
-            formData += "__VIEWSTATE=" + HttpUtility.UrlEncode(__VIEWSTATE) + "&";
-            formData += "__EVENTVALIDATION=" + HttpUtility.UrlEncode(__EVENTVALIDATION) + "&";
+            formData += "__VIEWSTATE=" + WebUtility.UrlEncode(__VIEWSTATE) + "&";
+            formData += "__EVENTVALIDATION=" + WebUtility.UrlEncode(__EVENTVALIDATION) + "&";
             formData += "__ASYNCPOST=true&";
             formData += "ctl00$cphMain$btnBuscarCedula=Buscar";
 
@@ -92,8 +92,8 @@ namespace Octetus.ConsultasDgii.Services
             formData += "__EVENTARGUMENT=&";
             formData += "__VIEWSTATEGENERATOR=" + __VIEWSTATEGENERATOR + "&";
 
-            formData += "__VIEWSTATE=" + HttpUtility.UrlEncode(__VIEWSTATE) + "&";
-            formData += "__EVENTVALIDATION=" + HttpUtility.UrlEncode(__EVENTVALIDATION) + "&";
+            formData += "__VIEWSTATE=" + WebUtility.UrlEncode(__VIEWSTATE) + "&";
+            formData += "__EVENTVALIDATION=" + WebUtility.UrlEncode(__EVENTVALIDATION) + "&";
             formData += "__ASYNCPOST=true&";
             formData += "ctl00$cphMain$btnBuscarPorRNC=BUSCAR";
 
@@ -147,9 +147,9 @@ namespace Octetus.ConsultasDgii.Services
             formData += "ctl00$cphMain$txtCodigoSeg=&";
             formData += "__EVENTTARGET=&";
             formData += "__EVENTARGUMENT=&";
-            formData += $"__VIEWSTATE={HttpUtility.UrlEncode(__VIEWSTATE)}&";
+            formData += $"__VIEWSTATE={WebUtility.UrlEncode(__VIEWSTATE)}&";
             formData += $"__VIEWSTATEGENERATOR={__VIEWSTATEGENERATOR}&";
-            formData += $"__EVENTVALIDATION={HttpUtility.UrlEncode(__EVENTVALIDATION)}&";
+            formData += $"__EVENTVALIDATION={WebUtility.UrlEncode(__EVENTVALIDATION)}&";
             formData += "__ASYNCPOST=true&";
             formData += "ctl00$cphMain$btnConsultar=Buscar";
 
