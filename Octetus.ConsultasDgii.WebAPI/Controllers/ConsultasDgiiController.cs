@@ -22,23 +22,30 @@ namespace Octetus.ConsultasDgii.WebAPI.Controllers
 
         [HttpPost("consutar-ncf")]
         [Consumes("application/x-www-form-urlencoded")]
-        public RespuestaConsultaNcf ConsultarNcf([FromForm]string ncf, [FromForm] string rnc)
+        public RespuestaConsultaNcf ConsultarNcf([FromForm] string ncf, [FromForm] string rnc)
         {
             return _servicioConsultasDgii.ConsultarNcf(ncf, rnc);
+        }
+
+        [HttpPost("consutar-encf")]
+        [Consumes("application/x-www-form-urlencoded")]
+        public RespuestaConsultaENcf ConsultarENcf(string ncf, string rnc, string rncComprador, string codigoSeg)
+        {
+            return _servicioConsultasDgii.ConsultarENcf(ncf, rnc, rncComprador, codigoSeg);
         }
 
         [HttpPost("consutar-rnc-contribuyente")]
         [Consumes("application/x-www-form-urlencoded")]
         public RespuestaConsultaRncContribuyentes ConsultarRncContribuyentes([FromForm] string rnc)
         {
-            return _servicioConsultasDgii.ConsultarRncContribuyentes( rnc);
+            return _servicioConsultasDgii.ConsultarRncContribuyentes(rnc);
         }
 
         [HttpPost("consutar-rnc-registrados")]
         [Consumes("application/x-www-form-urlencoded")]
         public RespuestaConsultaRncRegistrados ConsultarRncRegistrados([FromForm] string rnc)
         {
-            return _servicioConsultasDgii.ConsultarRncRegistrados( rnc);
+            return _servicioConsultasDgii.ConsultarRncRegistrados(rnc);
         }
     }
 }

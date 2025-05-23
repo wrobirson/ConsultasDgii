@@ -65,7 +65,7 @@ namespace Octetus.ConsultasDgii.Services
             {
                 response.Message = xDocument.XPathSelectElement("//*[@id='cphMain_divAlertDanger']")?.Value;
             }
-            
+
             return response;
         }
 
@@ -154,7 +154,7 @@ namespace Octetus.ConsultasDgii.Services
             formData += "ctl00$cphMain$btnConsultar=Buscar";
 
             var responseText = PostBack(RequestUrlConsultaNcf, formData, cookieContainer);
-            
+
             // Extraemos los valores del la tabla HTML
             var xDocument = ParseToXDocument(responseText);
 
@@ -181,8 +181,12 @@ namespace Octetus.ConsultasDgii.Services
             int finalIndex = content.LastIndexOf(">");
             content = content.Substring(startIndex, finalIndex - startIndex + 1);
 
+            //Reemplazar entidades malformadas antes de parsear como XML
+            content = content.Replace("&oacuten", "ó");
+            // todo: Considerar el uso de HtmlAgilityPack que puede que sea más tolerante a este tipo de errores
+
             // Extraemos los valores del la tabla HTML
-            return  XDocument.Parse($"<!DOCTYPE doctypeName [" +
+            return XDocument.Parse($"<!DOCTYPE doctypeName [" +
                 $"<!ENTITY nbsp \"&#160;\">" +
                 $"<!ENTITY aacute \"&#225;\">" +
                 $"<!ENTITY eacute \"&#233;\">" +
@@ -241,6 +245,73 @@ namespace Octetus.ConsultasDgii.Services
             }
 
             return responseText;
+        }
+
+
+        /// <summary>
+        /// ​​​Esta herramienta da a conocer la existencia y validez de un comprobante fiscal con relación al RNC del contribuyente que lo emite.
+        /// </summary>
+        /// <param name="ncf">El Número de Comprobante Fiscal (NCF) que le entregaron en el establecimiento</param>
+        /// <param name="rncEmisor">El Registro Nacional del Contribuyente (RNC) del contribuyente que desea consultar</param>
+        /// <param name="rncComprador">El Registro Nacional del Contribuyente (RNC) del comprador.</param>
+        /// <param name="codigoSeg">Codigo de seguridad la la validacion de e-NCF</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public RespuestaConsultaENcf ConsultarENcf(string rncEmisor, string ncf, string rncComprador, string codigoSeg)
+        {
+            if (ncf.StartsWith("E"))
+            {
+                if (string.IsNullOrEmpty(rncComprador))
+                    throw new ArgumentException("RNC del comprador es requerido", nameof(rncComprador));
+
+                if (string.IsNullOrEmpty(codigoSeg))
+                    throw new ArgumentException("Código de seguridad es requerido", nameof(codigoSeg));
+            }
+
+            CookieContainer cookieContainer = new CookieContainer();
+
+            var htmlDocument = LoadPage(RequestUrlConsultaNcf, cookieContainer);
+
+            string __VIEWSTATE = htmlDocument.DocumentNode.SelectNodes("//input[@name='__VIEWSTATE']").First().Attributes["value"].Value;
+            string __EVENTVALIDATION = htmlDocument.DocumentNode.SelectNodes("//input[@name='__EVENTVALIDATION']").First().Attributes["value"].Value;
+            string __VIEWSTATEGENERATOR = htmlDocument.DocumentNode.SelectNodes("//input[@name='__VIEWSTATEGENERATOR']").First().Attributes["value"].Value;
+
+            string formData = $"";
+            formData += "ctl00$smMain=ctl00$upMainMaster|ctl00$cphMain$btnConsultar&";
+            formData += $"ctl00$cphMain$txtRNC={rncEmisor}&";
+            formData += $"ctl00$cphMain$txtNCF={ncf}&";
+            formData += $"ctl00$cphMain$txtRncComprador={rncComprador}&";
+            formData += $"ctl00$cphMain$txtCodigoSeg={codigoSeg}&";
+            formData += "__EVENTTARGET=&";
+            formData += "__EVENTARGUMENT=&";
+            formData += $"__VIEWSTATE={WebUtility.UrlEncode(__VIEWSTATE)}&";
+            formData += $"__VIEWSTATEGENERATOR={__VIEWSTATEGENERATOR}&";
+            formData += $"__EVENTVALIDATION={WebUtility.UrlEncode(__EVENTVALIDATION)}&";
+            formData += "__ASYNCPOST=true&";
+            formData += "ctl00$cphMain$btnConsultar=Buscar";
+
+            var responseText = PostBack(RequestUrlConsultaNcf, formData, cookieContainer);
+
+            // Extraemos los valores del la tabla HTML
+            var xDocument = ParseToXDocument(responseText);
+
+            var response = new RespuestaConsultaENcf();
+            response.Message = xDocument.XPathSelectElement("//*[@id='cphMain_lblInformacion']")?.Value;
+            if (xDocument.XPathSelectElement("//*[@id='cphMain_PResultadoFE']") != null)
+            {
+                response.RncEmisor = xDocument.XPathSelectElement("//*[@id='cphMain_lblrncemisor']")?.Value;
+                response.RncComprador = xDocument.XPathSelectElement("//*[@id='cphMain_lblrnccomprador']")?.Value;
+                response.ENcf = xDocument.XPathSelectElement("//*[@id='cphMain_lblencf']")?.Value;
+                response.CodigoSeguridad = xDocument.XPathSelectElement("//*[@id='cphMain_lblCodSeguridad']")?.Value;
+                response.Estado = xDocument.XPathSelectElement("//*[@id='cphMain_lblEstadoFe']")?.Value;
+                response.MontoTotal = decimal.Parse(xDocument.XPathSelectElement("//*[@id='cphMain_lblMontoTotal']")?.Value);
+                response.TotalITBIS = decimal.Parse(xDocument.XPathSelectElement("//*[@id='cphMain_lblTotalItbis']")?.Value);
+                response.FechaEmision = xDocument.XPathSelectElement("//*[@id='cphMain_lblFechaEmision']")?.Value;
+                response.FechaFirma = xDocument.XPathSelectElement("//*[@id='cphMain_lblFechaFirma']")?.Value;
+                response.Success = true;
+            }
+
+            return response;
         }
     }
 }
