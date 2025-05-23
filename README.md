@@ -62,6 +62,20 @@ if (response.Success)
 	estado = response.Estado;
 }
 ```
+## Ejemplo consultar e-NCF
+
+```c#
+string tipo = string.Empty;
+string estado = string.Empty;
+
+var dgii = new ServicioConsultasWebDgii();
+var response = dgii.ConsultarENcf( "[RNC EMISOR]", "[e-NCF]", "[RNC COMPRADOR]", "[CODIGO DE SEGURIDAD]");
+
+if (response.Success)
+{
+	estado = response.Estado;
+}
+```
 ## Licencia
 
 [MIT](https://github.com/wrobirson/ConsultasDgii/blob/master/LICENSE)

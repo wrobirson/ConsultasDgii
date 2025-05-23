@@ -29,9 +29,9 @@ namespace Octetus.ConsultasDgii.WebAPI.Controllers
 
         [HttpPost("consutar-encf")]
         [Consumes("application/x-www-form-urlencoded")]
-        public RespuestaConsultaENcf ConsultarENcf(string ncf, string rnc, string rncComprador, string codigoSeg)
+        public RespuestaConsultaENcf ConsultarENcf(string rncEmisor, string eNcf, string rncComprador, string codigoSeg)
         {
-            return _servicioConsultasDgii.ConsultarENcf(ncf, rnc, rncComprador, codigoSeg);
+            return _servicioConsultasDgii.ConsultarENcf(rncEmisor, eNcf, rncComprador, codigoSeg);
         }
 
         [HttpPost("consutar-rnc-contribuyente")]
